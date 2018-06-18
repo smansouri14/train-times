@@ -61,31 +61,30 @@ var firstTrain = childSnapshot.val().firstTrain;
 var frequency = childSnapshot.val().frequency;
 
 
-var frequency;
 var firstTime = 0;
 
-var ftConvert = moment(firstTime, "HH:mm").subtract(1, "years");
+var ftConvert = moment(firstTrain, "HH:mm").subtract(1, "years");
    console.log(ftConvert);
 
 // Current Time
 var currentTime = moment();
-console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
+    console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
 
 // Difference between the times
 var timeDifference = moment().diff(moment(ftConvert), "minutes");
-console.log("DIFFERENCE IN TIME: " + timeDifference);
+    console.log("DIFFERENCE IN TIME: " + timeDifference);
 
 // Time apart (remainder)
 var timeRemainder = timeDifference % frequency;
-console.log(timeRemainder);
+    console.log("TIME REMAINDER: " + timeRemainder);
 
 // Minute Until Train
 var minutesUntillNextTrain = frequency - timeRemainder;
-console.log("MINUTES TILL TRAIN: " + minutesUntillNextTrain);
+    console.log("MINUTES UNTILL THE NEXT TRAIN: " + minutesUntillNextTrain);
 
 // Next Train
 var nextTrain = moment().add(minutesUntillNextTrain, "minutes");
-console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm"));
+    console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm"));
 
 //displays the value typed in into the add train box
     $("#directory > tbody").append("<tr><td>" + trainName +"</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + moment(nextTrain).format("HH:mm") + "</td><td>" + minutesUntillNextTrain + "</td></tr>");
